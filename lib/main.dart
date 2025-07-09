@@ -40,6 +40,8 @@ class _MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<_MyHomePage> {
+  final FocusNode _focusNode = FocusNode();
+  final TextEditingController _controller = TextEditingController();
   int _counter = 0;
 
   void _incrementCounter() {
@@ -57,6 +59,14 @@ class _MyHomePageState extends State<_MyHomePage> {
           const Text('You have pushed the button this many times:'),
           Text('$_counter'),
           GestureDetector(onTap: _incrementCounter, child: const Text('+1')),
+          SizedBox(height: 64.0),
+          EditableText(
+            backgroundCursorColor: Color(0xff00ff00),
+            controller: _controller,
+            cursorColor: Color(0xff00ff00),
+            style: TextStyle(),
+            focusNode: _focusNode,
+          ),
           SizedBox(height: 64.0),
           GestureDetector(
             onTap: () {
