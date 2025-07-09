@@ -11,12 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WidgetsApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Widgets Library Demo',
       color: Color(0xff00ff00),
       onGenerateRoute: (RouteSettings? settings) {
         return switch (settings?.name) {
           '/' => _WidgetsPageRoute(
-            builder: (BuildContext context) => MyHomePage(title: 'Home'),
+            builder: (BuildContext context) => _MyHomePage(title: 'Home'),
+          ),
+          '/subpage' => _WidgetsPageRoute(
+            builder: (BuildContext context) => _MySubPage(title: 'Sub Page'),
           ),
           _ => _WidgetsPageRoute(
             builder: (BuildContext context) => _UnknownPage(),
@@ -27,16 +30,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class _MyHomePage extends StatefulWidget {
+  const _MyHomePage({required this.title});
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<_MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<_MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -54,6 +57,38 @@ class _MyHomePageState extends State<MyHomePage> {
           const Text('You have pushed the button this many times:'),
           Text('$_counter'),
           GestureDetector(onTap: _incrementCounter, child: const Text('+1')),
+          SizedBox(height: 64.0),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/subpage');
+            },
+            child: const Text('Next Page'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _MySubPage extends StatelessWidget {
+  const _MySubPage({required this.title});
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text('Page: $title'),
+          SizedBox(height: 64.0),
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Go Back'),
+          ),
         ],
       ),
     );
