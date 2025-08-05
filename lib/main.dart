@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'pages/text_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
           '/' => _WidgetsPageRoute(
             builder: (BuildContext context) => _MyHomePage(title: 'Home'),
           ),
-          '/subpage' => _WidgetsPageRoute(
-            builder: (BuildContext context) => _MySubPage(title: 'Sub Page'),
+          '/text' => _WidgetsPageRoute(
+            builder: (BuildContext context) => TextPage(title: 'Text Page'),
           ),
           _ => _WidgetsPageRoute(
             builder: (BuildContext context) => _UnknownPage(),
@@ -70,34 +71,9 @@ class _MyHomePageState extends State<_MyHomePage> {
           SizedBox(height: 64.0),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '/subpage');
+              Navigator.pushNamed(context, '/text');
             },
-            child: const Text('Next Page'),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MySubPage extends StatelessWidget {
-  const _MySubPage({required this.title});
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text('Page: $title'),
-          SizedBox(height: 64.0),
-          GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Text('Go Back'),
+            child: const Text('Go to Text Page'),
           ),
         ],
       ),
