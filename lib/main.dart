@@ -1,4 +1,6 @@
 import 'package:flutter/widgets.dart';
+
+import 'theme.dart';
 import 'pages/text_page.dart';
 
 void main() {
@@ -11,22 +13,25 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return WidgetsApp(
-      title: 'Flutter Widgets Library Demo',
-      color: Color(0xff00ff00),
-      onGenerateRoute: (RouteSettings? settings) {
-        return switch (settings?.name) {
-          '/' => _WidgetsPageRoute(
-            builder: (BuildContext context) => _MyHomePage(title: 'Home'),
-          ),
-          '/text' => _WidgetsPageRoute(
-            builder: (BuildContext context) => TextPage(title: 'Text Page'),
-          ),
-          _ => _WidgetsPageRoute(
-            builder: (BuildContext context) => _UnknownPage(),
-          ),
-        };
-      },
+    return MyInheritedTheme(
+      themeData: MyThemeData(textColor: Color(0xffffffaa)),
+      child: WidgetsApp(
+        title: 'Flutter Widgets Library Demo',
+        color: Color(0xff00ff00),
+        onGenerateRoute: (RouteSettings? settings) {
+          return switch (settings?.name) {
+            '/' => _WidgetsPageRoute(
+              builder: (BuildContext context) => _MyHomePage(title: 'Home'),
+            ),
+            '/text' => _WidgetsPageRoute(
+              builder: (BuildContext context) => TextPage(title: 'Text Page'),
+            ),
+            _ => _WidgetsPageRoute(
+              builder: (BuildContext context) => _UnknownPage(),
+            ),
+          };
+        },
+      ),
     );
   }
 }
@@ -57,7 +62,9 @@ class _MyHomePageState extends State<_MyHomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Text('You have pushed the button this many times:'),
+          Text('You have pushed the button this many times:',
+            style: TextStyle(color: MyInheritedTheme.of(context).textColor),
+          ),
           Text('$_counter'),
           GestureDetector(onTap: _incrementCounter, child: const Text('+1')),
           SizedBox(height: 64.0),
