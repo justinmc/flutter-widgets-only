@@ -12,7 +12,8 @@ class MyInheritedTheme extends InheritedWidget {
   final MyThemeData themeData;
 
   static MyThemeData of(BuildContext context) {
-    final MyInheritedTheme? theme = context.dependOnInheritedWidgetOfExactType<MyInheritedTheme>();
+    final MyInheritedTheme? theme = context
+        .dependOnInheritedWidgetOfExactType<MyInheritedTheme>();
     return theme?.themeData ?? MyThemeData();
   }
 

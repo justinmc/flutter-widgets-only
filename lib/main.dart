@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'theme.dart';
 import 'pages/text_page.dart';
+import 'widgets/text.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,7 +48,7 @@ class _MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<_MyHomePage> {
   final FocusNode _focusNode = FocusNode();
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController(text: 'Type stuff here.');
   int _counter = 0;
 
   void _incrementCounter() {
@@ -58,13 +59,13 @@ class _MyHomePageState extends State<_MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final Color textColor = MyInheritedTheme.of(context).textColor;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('You have pushed the button this many times:',
-            style: TextStyle(color: MyInheritedTheme.of(context).textColor),
-          ),
+          MyText('You have pushed the button this many times:'),
           Text('$_counter'),
           GestureDetector(onTap: _incrementCounter, child: const Text('+1')),
           SizedBox(height: 64.0),
@@ -72,7 +73,7 @@ class _MyHomePageState extends State<_MyHomePage> {
             backgroundCursorColor: Color(0xff00ff00),
             controller: _controller,
             cursorColor: Color(0xff00ff00),
-            style: TextStyle(),
+            style: TextStyle(color: textColor),
             focusNode: _focusNode,
           ),
           SizedBox(height: 64.0),

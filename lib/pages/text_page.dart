@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../text_selection_controls.dart';
-import '../theme.dart';
+import '../widgets/text.dart';
 
 class TextPage extends StatelessWidget {
   const TextPage({required this.title, super.key});
@@ -42,20 +42,17 @@ class TextPage extends StatelessWidget {
                     child: Text('I am a context menu.'),
                   );
                 },
-            child: Text(
+            child: MyText(
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            style: TextStyle(color: MyInheritedTheme.of(context).textColor),
             ),
           ),
           SizedBox(height: 64.0),
-          Text(
+          MyText(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            style: TextStyle(color: MyInheritedTheme.of(context).textColor),
           ),
           SizedBox(height: 64.0),
-          Text(
+          MyText(
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-            style: TextStyle(color: MyInheritedTheme.of(context).textColor),
           ),
         ],
       ),
