@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
+// TODO(justinmc): What about light/dark mode?
+// TODO(justinmc): What about including the platform in the theme like Material does?
 // TODO(justinmc): Or this could be an InheritedModel.
 class MyInheritedTheme extends InheritedWidget {
   const MyInheritedTheme({
